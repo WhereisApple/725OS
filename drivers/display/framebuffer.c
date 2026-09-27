@@ -61,7 +61,6 @@ static void draw_sheet(const SpriteSheet *sheet, UINTN frame, INTN dx, INTN dy,
     }
 }
 
-/* Compact 5x7 font for the game's title, score, and status. */
 static const UINT8 font[37][5] = {
     {0x7e,0x11,0x11,0x11,0x7e},{0x7f,0x49,0x49,0x49,0x36},{0x3e,0x41,0x41,0x41,0x22},
     {0x7f,0x41,0x41,0x22,0x1c},{0x7f,0x49,0x49,0x49,0x41},{0x7f,0x09,0x09,0x09,0x01},
@@ -100,7 +99,6 @@ static void draw_text(INTN x, INTN y, const char *text, UINT8 r, UINT8 g, UINT8 
 
 static void draw_wall(INTN x, INTN y, const GameState *game, UINTN mx, UINTN my)
 {
-    /* Use the atlas' dark wall tile, then expose the silver-blue wall seams. */
     draw_sheet(&asset_tileset, 0, x, y, tile_size, tile_size, MOVE_NONE);
     if (my == 0 || game->maze[my - 1][mx] != '#') fill_rect(x, y, tile_size, 2, 139, 155, 180);
     if (my + 1 == GAME_HEIGHT || game->maze[my + 1][mx] != '#') fill_rect(x, y + tile_size - 2, tile_size, 2, 139, 155, 180);
