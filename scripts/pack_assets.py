@@ -1,9 +1,6 @@
-#!/usr/bin/env python3
-"""Convert the project's transparent PNG sheets into an embedded RGBA asset pack."""
 import argparse
 from pathlib import Path
 from PIL import Image
-
 SHEETS = [
     ("asset_pacman", "PacMan.png", 16, 16),
     ("asset_ghost_red", "redGhost.png", 16, 16),
@@ -17,8 +14,6 @@ SHEETS = [
     ("asset_big_coin_transparent", "BigCoinTransparent.png", 16, 16),
     ("asset_tileset", "Tileset.png", 48, 48),
 ]
-
-
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--assets", required=True, type=Path)
@@ -50,7 +45,5 @@ def main():
             f'{fw}, {fh}, {cols}, {rows} }};'
         )
     args.source.write_text("\n".join(lines) + "\n")
-
-
 if __name__ == "__main__":
     main()
